@@ -10,9 +10,10 @@ Advent of Code Day 2 Part 1
 using namespace std;
 int main() {
 	ifstream file;
-	char direction;
+	char direction = 'L';
 	int number, j = 0;
 	int numberList[6];
+	string test = "UDUDUDLRLRLRLD";
 
 	number = 5;
 
@@ -21,67 +22,56 @@ int main() {
 		cout << "Could not open file!";
 	}
 
-	while (file) {				//Most recent addition to the program
+	while (file) {				
 		while (direction != 'i') {
 			file >> direction;
 
-			if (direction == 'U') {
-				number -= 3;
-			}
-			else if (direction == 'D') {
-				number += 3;
-			}
-			else if (direction == 'L') {
-				number -= 1;
-			}
-			else if (direction == 'R') {
-				number += 1;
-			}
+			switch (direction) {
+			case 'U':
+				if (number == 1 || 2 || 3) {
+					number = number;
+				}
+				else {
+					number += 3;
+				}
+				break;
 
-			if (number == 1 && direction == 'U') {
-				number = number;
-			}
-			else if (number == 2 && direction == 'U') {
-				number = number;
-			}
-			else if (number == 3 && direction == 'U') {
-				number = number;
-			}
-			else if (number == 1 && direction == 'L') {
-				number = number;
-			}
-			else if (number == 4 && direction == 'L') {
-				number = number;
-			}
-			else if (number == 7 && direction == 'L') {
-				number = number;
-			}
-			else if (number == 3 && direction == 'R') {
-				number = number;
-			}
-			else if (number == 6 && direction == 'R') {
-				number = number;
-			}
-			else if (number == 9 && direction == 'R') {
-				number = number;
-			}
-			else if (number == 7 && direction == 'D') {
-				number = number;
-			}
-			else if (number == 8 && direction == 'D') {
-				number = number;
-			}
-			else if (number == 9 && direction == 'D') {
-				number = number;
+			case 'D':
+				if (number == 7 || 8 || 9) {
+					number = number;
+				}
+				else {
+					number -= 3;
+				}
+				break;
+
+			case 'L':
+				if (number == 1 || 4 || 7) {
+					number = number;
+				}
+				else {
+					number -= 1;
+				}
+				break;
+
+			case 'R':
+				if (number == 3 || 6 || 9) {
+					number = number;
+				}
+				else {
+					number += 1;
+				}
+				break;
+
 			}
 		}
 		cout << number;
-
 		j++;
 	}
-	
 
 	cout << endl;
+
+	file.close();
 
 	return 0;
 }
