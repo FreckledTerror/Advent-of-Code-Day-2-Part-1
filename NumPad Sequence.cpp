@@ -21,12 +21,11 @@ int main() {
 	if (!file.is_open()) {
 		cout << "Could not open file!";
 	}
+			
+	while (j != 5) {
+		file >> noskipws >> direction;
 
-	while (file) {				
-		while (direction != 'i') {
-			file >> direction;
-
-			switch (direction) {
+		switch (direction) {
 			case 'U':
 				if (number == 1 || 2 || 3) {
 					number = number;
@@ -47,7 +46,7 @@ int main() {
 
 			case 'L':
 				if (number == 1 || 4 || 7) {
-					number = number;
+						number = number;
 				}
 				else {
 					number -= 1;
@@ -62,13 +61,14 @@ int main() {
 					number += 1;
 				}
 				break;
-
+			case 'i':
+				numberList[j] = number;
 			}
-		}
+			
 		cout << number;
-		j++;
-	}
-
+			j++;
+		}
+	
 	cout << endl;
 
 	file.close();
